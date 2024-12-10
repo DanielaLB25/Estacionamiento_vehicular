@@ -38,7 +38,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Sistema de Estacionamiento</a>
+            <a class="navbar-brand" href="#">Sistema de Estacionamiento CityPark</a>
             <a href="/logout" class="btn btn-outline-light">Cerrar sesión</a>
         </div>
     </nav>
@@ -53,6 +53,7 @@
                 <h5 class="card-title">Agregar un vehículo</h5>
                 <form action="/agregar_vehiculo" method="POST" class="d-flex">
                     <input type="text" name="placa" class="form-control me-2" placeholder="Placa del vehículo" required>
+                    <input type="number" name="pago" class="form-control me-2" placeholder="Monto de pago" required step="0.01" min="0">
                     <button type="submit" class="btn btn-primary">Agregar</button>
                 </form>
             </div>
@@ -68,6 +69,7 @@
                             <th>#</th>
                             <th>Placa</th>
                             <th>Fecha de Ingreso</th>
+                            <th>Monto de Pago</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -77,6 +79,7 @@
                             <td>{{ vehiculo.id }}</td>
                             <td>{{ vehiculo.placa }}</td>
                             <td>{{ vehiculo.fecha_ingreso.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            <td>{{ vehiculo.pago }} Bs</td>
                             <td>
                                 <form action="/salir_vehiculo/{{ vehiculo.id }}" method="POST" style="display:inline-block;">
                                     <button type="submit" class="btn btn-success btn-sm">Marcar salida</button>
@@ -103,6 +106,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
         
                    
